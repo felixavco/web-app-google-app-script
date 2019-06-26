@@ -1,0 +1,72 @@
+<?!= include("header"); ?>
+
+<div class="row my-5">
+    <div class="col-12 col-md-4">
+        <div class="card p-3">
+            <div class="card-title">
+                <h4 class="text-center text-secondary">Add Team Member</h4>
+            </div>
+            <div class="card-body">
+                <form id="user-form">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="firstName" id="firstName"
+                            placeholder="First Name" />
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name" />
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="ldap" id="ldap" placeholder="LDAP" />
+                    </div>
+
+                    <div class="form-group">
+                        <!-- <input class="form-control" type="text" name="team" id="team" placeholder="Team"/> -->
+                        <select name="team" id="team" class="form-control">
+                            <option value="">Select your Team Leader</option>
+                            <? for(var i = 0; i < teamLeaders.length; i++) { ?>
+                            <option value="<?= teamLeaders[i]  ?>"><?= teamLeaders[i] ?></option>
+                            <? } ?>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- TABLE -->
+    <div class="col-12 col-md-8">
+        <div class="card p-3">
+            <div class="card-title">
+                <h4 class="text-center text-secondary">Team Member</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">TL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <? for(var i = 0; i < teamMembers.length; i++) { ?>
+                        <tr>
+                            <td><?= teamMembers[i][0] ?></td>
+                            <td><?= teamMembers[i][1] ?></td>
+                            <td><?= teamMembers[i][2] ?></td>
+                            <td><?= teamMembers[i][3] ?></td>
+                        </tr>
+                        <? } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?!= include("footer"); ?>

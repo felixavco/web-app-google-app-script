@@ -1,0 +1,30 @@
+</div> <!-- End Container -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+  var userForm = document.getElementById("user-form");
+
+  //Handles the form submition 
+  userForm.addEventListener("submit", submitHandler);
+
+  function submitHandler(e) {
+      e.preventDefault();
+      //* Store the user data into the formData object
+      var formData = {};
+      var formElements = userForm.elements;
+      for (var i = 0; i < formElements.length - 1; i++) {
+        var item = formElements.item(i);
+        formData[item.name] = item.value;
+      }
+
+      //* Sends the User data to Backend
+      google.script.run.getUserData(formData);
+      //* Clears the form
+      userForm.reset();
+
+  }
+</script>
+</body>
+
+</html>
