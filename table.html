@@ -1,0 +1,37 @@
+<?!= include("header"); ?>
+
+<div class="row my-5">
+    <div class="col-12 col-md-8 mx-auto">
+        <div class="card p-3">
+            <div class="card-title">
+                <h4 class="text-center text-secondary">Team Member</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">TL</th>
+                            <th scope="col">Send Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <? for(var i = 0; i < teamMembers.length; i++) { ?>
+                        <tr>
+                            <td><?= teamMembers[i][0] ?></td>
+                            <td><?= teamMembers[i][1] ?></td>
+                            <td><?= teamMembers[i][2] ?></td>
+                            <td><?= teamMembers[i][3] ?></td>
+                            <td><button data-name="<?= teamMembers[i][0] ?> <?= teamMembers[i][1] ?>" data-email="<?= teamMembers[i][2] ?>" class="btn btn-primary send-btn">Send</button></td>
+                        </tr>
+                        <? } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?!= include("footer"); ?>

@@ -4,11 +4,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
   var userForm = document.getElementById("user-form");
+  var sendBtn = document.getElementsByClassName("send-btn");
 
-  //Handles the form submition 
-  userForm.addEventListener("submit", submitHandler);
-
-  function submitHandler(e) {
+  if (userForm) {
+    //Handles the form submition 
+    userForm.addEventListener("submit", submitHandler);
+    function submitHandler(e) {
       e.preventDefault();
       //* Store the user data into the formData object
       var formData = {};
@@ -22,8 +23,26 @@
       google.script.run.getUserData(formData);
       //* Clears the form
       userForm.reset();
-
+    }
   }
+
+  if (sendBtn) {
+    for (var i = 0; i < sendBtn.length; i++) {
+      sendBtn[i].addEventListener("click", sendEmailHandler);
+    }
+
+    function sendEmailHandler(e) {
+      var data = {
+        name: e.target.dataset.name,
+        email: e.target.dataset.email
+      }
+
+      google.script.run.sendNotification(data);
+    }
+  }
+
+
+
 </script>
 </body>
 
